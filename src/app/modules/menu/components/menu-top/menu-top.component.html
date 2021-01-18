@@ -1,0 +1,13 @@
+<mat-toolbar style="background-color: rgb(180, 18, 18);">
+    <mat-toolbar-row>
+        <a href=""><img [src]="'assets/images/logo.png'" width="70px" height="70px"></a>
+        <a mat-button [routerLink]="'/courses'" style="font-size: x-large;">Ürünler</a>
+        <a mat-button *ngIf="!user"  [routerLink]="'/login'"style="font-size: x-large;">Giriş Yap</a>
+        <a mat-button  *ngIf="user" [matMenuTriggerFor]="Menu" style="font-size: x-large;" >{{user.name}} </a>
+        <mat-menu #Menu="matMenu" >
+            <button mat-menu-item *ngIf="user && user.isAdmin" [routerLink]="'/admin-courses'">Admin Sayfası</button>
+            <button mat-menu-item (click)="logout()">Çıkış Yap</button>
+        </mat-menu>
+        <a mat-button (click)="recapShopping()"><span class='shopping-course'>{{nbrShoppingCourse}}</span>  <i class="material-icons" style="font-size: x-large;"> add_shopping_cart</i></a>
+      </mat-toolbar-row>
+</mat-toolbar>
